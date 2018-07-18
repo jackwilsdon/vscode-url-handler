@@ -1,0 +1,19 @@
+#!/usr/bin/env python3
+
+from os import execlp
+from sys import argv, exit
+from urllib.parse import unquote
+
+SCHEME_PREFIX = 'vscode://file/'
+
+# If we weren't given enough arguments or the first argument isn't a valid
+# path then we should exit with an error.
+if len(argv) < 2 or not argv[1].startswith(SCHEME_PREFIX):
+    exit(1)
+
+# Remove the scheme prefix, unquote and remove any whitespace surrounding the
+# filename.
+path = unquote(argv[1][len(SCHEME_PREFIX):]).strip()
+
+# Replace this process with VSCode, using an existing window if possible.
+execlp('code', '--reuse-window', '--goto', path)

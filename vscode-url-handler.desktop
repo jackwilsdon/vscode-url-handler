@@ -1,0 +1,8 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Visual Studio Code (URL Handler)
+Comment=Handle URL Scheme vscode://
+Icon=code
+Type=Application
+NoDisplay=true
+Exec=%VSCODE_URL_HANDLER%
